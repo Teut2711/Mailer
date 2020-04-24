@@ -7,4 +7,4 @@
   <li>Message(full path to html file)]</li>
 </ol>
 Column names can be anything but the meaning should pertain. Or in other words order of columns must be the same.
-First column will have column names and w/o any spaces between rows put all your data.
+First row will have column names and w/o any empty rows put all your data.
