@@ -1,9 +1,10 @@
 # Mailer
-<h1 color="blue">Send mail with attachments and messages to all your clients/friends/family by just creating a csv/xlsx file</h1>
+<h1>Send mail with attachments and messages to all your clients/friends/family by just creating a csv/xlsx file</h1>
 <ol>
-  <li>e-mail(email adresses seperated by a comma)</li>
-  <li>file attachment(file full path)</li>
+  <li>E-mail(email adresses seperated by a comma)</li>
+  <li>file attachment(full path of file)</li>
   <li>Subject(write in cell of csv) </li>
-<li>Message(full path to html file)]</li>
+  <li>Message(full path to html file)]</li>
 </ol>
-Column names can be anything but the meaning should pertain. Order must be the same.
+Column names can be anything but the meaning should pertain. Or in other words order of columns must be the same.
+First column will have column names and w/o any spaces between rows put all your data.
