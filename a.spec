@@ -3,7 +3,7 @@
 block_cipher = None
 
 
-a = Analysis(['Main.py', 'sendmailer.py', 'UIdesign.py'],
+a = Analysis(['src/mailer/__main__.py'],
              pathex=[],
              binaries=[],
              datas=[("index.png", ".")],

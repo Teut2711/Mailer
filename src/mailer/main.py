@@ -1,17 +1,16 @@
-
-from UIdesign import Ui_MainWindow
+import os
+import smtplib
+import subprocess
+import sys
+from time import sleep
 
 from PyQt5 import QtWidgets
 from PyQt5 import QtGui, QtCore
 from PyQt5.QtWidgets import QFileDialog, QToolTip
 from PyQt5.QtGui import QFont, QValidator
 
-from sendmailer import sendMail
-
-import subprocess
-import os
-from time import sleep
-import smtplib
+from mailer.sendmailer import sendMail
+from mailer.UIdesign import Ui_MainWindow
 
 
 def authenticateuser(host, port, user, passwd):
@@ -103,9 +102,8 @@ class MainMailer(Ui_MainWindow):
         self.textBrowser.append("<strong>Process Finished...<strong>")
 
 
-if __name__ == "__main__":
-    import sys
+def main():
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = MainMailer(MainWindow)
-    sys.exit(app.exec_())
+    return app.exec()
