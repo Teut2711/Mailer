@@ -1,7 +1,7 @@
 # Mailer
 <h1>Send mail with attachments and messages to all your clients/friends/family by just creating a csv/xlsx file</h1>
 <ol>
-  <li>E-mail(email adresses seperated by a comma)</li>
+  <li>E-mail(email addresses seperated by a comma)</li>
   <li>file attachment(full path of file)</li>
   <li>Subject(write in cell of csv) </li>
   <li>Message(full path to html file)</li>
