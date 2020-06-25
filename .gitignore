@@ -1,3 +1,5 @@
+Profiles/*
+stubs.v4/*
 .vscode/
 venv/
 # Created by https://www.gitignore.io/api/git,vim,python,pycharm,visualstudiocode

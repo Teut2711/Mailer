@@ -58,33 +58,37 @@ class sendMail(QThread):
         self.excel_file = excel_file
 
     def run(self):
-        
-        df = get_dataframe(self.excel_file)
-        nrows = df.shape[0]
+        with smtplib.SMTP(self.settings['smtphost'],
+                              self.settings['smtpport']) as smtp:
+            smtp.starttls()
+            smtp.login(user=self.settings['smtpuser'],
+                           password=self.settings['smtppass']) 
+            df = get_dataframe(self.excel_file)
+            nrows = df.shape[0]
 
-        for index, row in df.iterrows():
-            to, file_path, subject, message_file, from_ = *[
-                i.strip() for i in row.tolist()
-            ], self.settings["mailfrom"]
+            for index, row in df.iterrows():
+                to, file_path, subject, message_file, from_ = *[
+                    i.strip() for i in row.tolist()
+                ], self.settings["mailfrom"]
 
-            try:
-                msg = self.prepMail(from_, to, file_path, subject,
-                                    message_file)
-            except ValueError:
-                self.sent_to.emit(
-                    "Subject is Absent.. Mail not sent  to {to}" , -1)
-            except Exception as e:
-                self.sent_to.emit(f"{getattr(e, 'message', repr(e))}\n{index} {to}", -1)
-            else:
                 try:
-                    self.fireMail(msg)
-                    
+                    msg = self.prepMail(from_, to, file_path, subject,
+                                        message_file)
+                except ValueError:
+                    self.sent_to.emit(
+                        "Subject is Absent.. Mail not sent  to {to}" , -1)
                 except Exception as e:
-                    self.sent_to.emit(getattr(e, 'message', repr(e)), -1)
-                    
-                else:    
-                    self.sent_to.emit("Sent mail to :::  " + to,
-                                      ((index + 1) * 100) // nrows)
+                    self.sent_to.emit(f"{getattr(e, 'message', repr(e))}\n{index} {to}", -1)
+                else:
+                    try:
+                        self.fireMail(msg)
+                        
+                    except Exception as e:
+                        self.sent_to.emit(getattr(e, 'message', repr(e)), -1)
+                        
+                    else:    
+                        self.sent_to.emit("Sent mail to :::  " + to,
+                                        ((index + 1) * 100) // nrows)
 
     def prepMail(self, from_, to, file_path, subject, message_file):
 
@@ -117,10 +121,5 @@ class sendMail(QThread):
 
     def fireMail(self, msg):
             
-            with smtplib.SMTP(self.settings['smtphost'],
-                              self.settings['smtpport']) as smtp:
-                smtp.starttls()
-                smtp.login(user=self.settings['smtpuser'],
-                           password=self.settings['smtppass'])
-                smtp.send_message(msg)
+        smtp.send_message(msg)
             

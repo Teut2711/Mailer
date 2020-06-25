@@ -384,7 +384,7 @@ class Ui_MainWindow(object):
         self.lineEdit.setPlaceholderText(_translate("MainWindow", "Enter E-mail"))
         self.lineEdit_2.setPlaceholderText(_translate("MainWindow", "Enter Password"))
         self.label_6.setText(_translate("MainWindow", "Host"))
-        self.lineEdit_3.setText(_translate("MainWindow", "mail.masserv.com"))
+        self.lineEdit_3.setPlaceholderText(_translate("MainWindow", "Enter host name"))
         self.label.setText(_translate("MainWindow", "Mailer"))
         self.label_2.setText(_translate("MainWindow", "File Name"))
         self.FileBrowse.setText(_translate("MainWindow", "Browse"))

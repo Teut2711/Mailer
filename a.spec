@@ -3,14 +3,14 @@
 block_cipher = None
 
 
-a = Analysis(['src/mailer/__main__.py'],
+a = Analysis(['./src/mailer/__main__.py'],
              pathex=[],
              binaries=[],
-             datas=[("index.png", ".")],
+             datas=[("./src/index.png", ".")],
              hiddenimports=[],
              hookspath=[],
              runtime_hooks=[],
-             excludes=["nuitka"],
+             excludes=['pyinstaller'],
              win_no_prefer_redirects=False,
              win_private_assemblies=False,
              cipher=block_cipher,
@@ -24,9 +24,9 @@ exe = EXE(pyz,
           name='Mailer',
           debug=False,
           bootloader_ignore_signals=False,
-          strip=False,
+          strip=True,
           upx=True,
-          console=False , icon='mail.ico')
+          console=False , icon='./src/mailer.ico')
 coll = COLLECT(exe,
                a.binaries,
                a.zipfiles,
